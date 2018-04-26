@@ -26,9 +26,12 @@ parser.add_argument('--workers', type=int, help='number of data loading workers'
 parser.add_argument('--nepoch', type=int, default=25, help='number of epochs to train for')
 parser.add_argument('--outf', type=str, default='cls',  help='output folder')
 parser.add_argument('--model', type=str, default = '',  help='model path')
+parser.add_argument('--gpu', type=int, default=0, help='gpu ID')
+
 
 opt = parser.parse_args()
 print (opt)
+os.environ['CUDA_VISIBLE_DEVICES'] = str(opt.gpu)
 
 blue = lambda x:'\033[94m' + x + '\033[0m'
 
