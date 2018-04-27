@@ -25,10 +25,11 @@ parser.add_argument('--workers', type=int, help='number of data loading workers'
 parser.add_argument('--nepoch', type=int, default=25, help='number of epochs to train for')
 parser.add_argument('--outf', type=str, default='seg',  help='output folder')
 parser.add_argument('--model', type=str, default = '',  help='model path')
-
+parser.add_argument('--gpu', type=int, default=0, help='gpu ID')
 
 opt = parser.parse_args()
 print (opt)
+os.environ['CUDA_VISIBLE_DEVICES'] = str(opt.gpu)
 
 opt.manualSeed = random.randint(1, 10000) # fix seed
 print("Random Seed: ", opt.manualSeed)
